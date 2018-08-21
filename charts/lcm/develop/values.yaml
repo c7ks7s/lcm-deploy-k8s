@@ -1,0 +1,34 @@
+lcmImage: "c7ks7s-docker.jfrog.io/lcm-server-insight-webapp"
+lcmImageTag: "engr-525"
+
+imagePullPolicy: Always
+
+nodeSelector: {}
+
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 3
+
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
+
+persistence:
+  enabled: false
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+
+service:
+  type: ClusterIP
+  port: 3306

@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "lcm.fullname" . }}
+  labels:
+    app: {{ template "lcm.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    name: {{ template "lcm.fullname" . }}
+    targetPort: 8080
+  selector:
+    app: {{ template "lcm.fullname" . }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "lcm.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "lcm.fullname" . }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "lcm.fullname" . }}
+    spec:
+      containers:
+        - name: {{ template "lcm.fullname" . }}
+          #image: c7ks7s-docker.jfrog.io/lcm-server-insight-webapp:1.2.0.37
+          image: "{{ .Values.lcmImage | quote }}-{{ .Values.lcmImageTag | quote }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
+          envFrom:
+          - configMapRef:
+              name: '{{ template "lcm.fullname" . }}-config'
+          env:
+          - name: JFROG_USER
+            valueFrom:
+              secretKeyRef:
+                  name: jfrog-creds
+                  key: jfrog_user
+          - name: JFROG_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: jfrog-creds
+                  key: jfrog_password
+      imagePullSecrets:
+      - name: jfrog

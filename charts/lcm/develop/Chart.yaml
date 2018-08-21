@@ -1,0 +1,12 @@
+name: lcm
+version: develop
+appVersion: develop
+description: Clockwork LCM
+keywords:
+- clockwork
+- lcm
+home: https://clockwork-solutions.com
+icon: https://clockwork-solutions.com/wp-content/uploads/2017/02/logo_standard_white_minimal.png
+maintainers:
+- name: Clockwork Solutions
+  email: k8s@clockwork-solutions.com

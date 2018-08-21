@@ -1,0 +1,108 @@
+categories:
+- Clockwork
+- LCM
+questions:
+- variable: lcmVersion
+  description: "Docker Image Tag (LOWER case Branch Name or Tag)"
+  label: "Branch Name"
+  type: string
+  default: "develop"
+  required: true
+  group: "LCM Settings"
+- variable: lcmTenantVersion
+  description: "Artifactories release from lcm-release or lcm-snapshot (Branch Name or Tag)"
+  label: "LCM Tenant Version"
+  type: string
+  default: "develop"
+  required: true
+  group: "LCM Settings"
+- variable: tenants
+  description: |
+    LCM Tenants to include in Deployment:
+      Clockwork Demo_Shell_1 Demo_Shell_2 Drillship Helicopter
+      Helicopter2 Transocean demand_matrix_demo demo_test helicopter_demo
+      helicopter_demo_jeff helicopter_demo_product helicopter_demo_steve
+      simulation_test tacom_m1
+  label: "Tenants"
+  type: "multiline"
+  default: |
+    Clockwork
+    Demo_Shell_1
+    Demo_Shell_2
+    Drillship
+    Helicopter
+    Helicopter2
+    Transocean
+    demand_matrix_demo
+    demo_test
+    helicopter_demo
+    helicopter_demo_jeff
+    helicopter_demo_product
+    helicopter_demo_steve
+    simulation_test
+    tacom_m1
+  required: true
+  group: "LCM Settings"
+- variable: dbUser
+  description: "MySQL User Name"
+  label: "MYSQL_USER"
+  type: string
+  default: "root"
+  required: true
+  group: "LCM Settings"
+- variable: dbPassword
+  description: "MySQL Password"
+  label: "MYSQL_PASSWORD"
+  type: Password
+  default: "password"
+  group: "LCM Settings"
+- variable: dbHost
+  description: "MySQL Hostname"
+  label: "DB_HOST"
+  type: string
+  group: "LCM Settings"
+- variable: databaseDump
+  description: |
+    S3 dumpfile to import: s3://s3-<REGION>.amazonaws.com/<BUCKET>/<DUMP FILE NAME>
+  label: "Database Dump"
+  type: enum
+  options:
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.1.0.54/dev-automation-1.1.0.54-lite.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.1.0.65/dev-automation-1.1.0.65-demo2.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.13/dev-automation-1.2.0.13-preview.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-CHCDemo-w-lcm.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-CHCDemo-wOutputs.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-CHCDemo.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-matrix-preview.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-preview.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.15/dev-automation-1.2.0.15-sales.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.25/dev-automation-1.2.0.25-tacom-m1-preview.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.35/m1a1_fake-1.2.0.35.sql.gz"
+    - "s3-us-west-2.amazonaws.com/lcm-dbs/1.2.0.6/dev-automation-1.2.0.6-lcm-fundamental.sql.gz"
+    - "s3-us-gov-west-1.amazonaws.com/c7ks7s-lcm-dbs/1.2.0.20/chcdemo-final.sql.gz"
+    - "s3-us-gov-west-1.amazonaws.com/c7ks7s-lcm-dbs/1.2.0.25/dev-automation-1.2.0.25-tacom-m1-preview.gz"
+    - "s3-us-gov-west-1.amazonaws.com/c7ks7s-lcm-dbs/1.2.0.29/tacom_m1_1.2.0.29_dump.sql.gz"
+    - "s3-us-gov-west-1.amazonaws.com/c7ks7s-lcm-dbs/1.2.0.35/m1a1_fake-1.2.0.35.sql.gz"
+  default: "s3-us-west-2.amazonaws.com/lcm-dbs/1.1.0.54/dev-automation-1.1.0.54-lite.gz"
+  required: true
+  group: "LCM Settings"
+- variable: simulationEngineHost
+  description: "IP Address for the Demand Pro Engine / Wrapper Host (127.0.0.1)"
+  label: "SIMULATION_ENGINE_HOST"
+  type: string
+  default: "127.0.0.1"
+  required: true
+  group: "LCM Settings"
+- variable: demandProPort
+  description: "External Port for Demand Pro Input Transform service - this port will need to be added to the windows wrapper machine"
+  label: "DEMANDPRO_PORT"
+  type: string
+  default: "5000"
+  required: true
+- variable: serverName
+  description: "Fully Qualified Domain Name (FQDN) for LCM and CAS (Ex: rancher-qa.c7ks7s.com)"
+  label: "SERVER_NAME"
+  type: string
+  required: true
+  group: "LCM Settings"
+## Purposely left EXT_PORT and SSL_CERT off for now
