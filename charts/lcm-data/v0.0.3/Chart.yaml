@@ -1,0 +1,20 @@
+name: lcm-data
+version: 0.0.3
+appVersion: 5.7.12
+description: Fast, reliable, scalable, and easy to use open-source relational database
+  system.
+keywords:
+- clockwork
+- lcm
+- mysql
+- database
+- sql
+home: https://clockwork-solutions.com
+icon: https://clockwork-solutions.com/wp-content/uploads/2017/02/logo_standard_white_minimal.png
+sources:
+- https://github.com/c7ks7s/lcm-mysql
+- https://github.com/c7ks7s/lcm-deploy
+maintainers:
+- name: Clockwork Solutions
+  email: k8s@clockwork-solutions.com
+engine: gotpl
