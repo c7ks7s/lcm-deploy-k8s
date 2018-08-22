@@ -4,16 +4,16 @@ metadata:
   name: '{{ template "lcm.fullname" . }}-config' # Need to revisit this
 data:
   WAIT_HOSTS_TIMEOUT: {{ .Values.waitHosts | quote }}
-  WAIT_HOSTS: "{{ .Values.dbHost }}:3306,apacheds:10389,cas:8081"
+  WAIT_HOSTS: "{{ .Values.dbHost | quote }}:3306,apacheds:10389,cas:8081"
   DB_MAX_ACTIVE: {{ .Values.dbMaxActive | quote }}
   DB_MAX_IDLE: {{ .Values.dbMaxIdle | quote }}
   DB_MAX_WAIT: {{ .Values.dbMaxWait | quote }}
   DB_TIME_BETWEEN_EVICTION_RUNS_MILLIS: {{ .Values.dbEvictionInterval | quote }}
-  DB_REMOVE_ABANDONED: {{ .Values.dbRemoveAbandoned }}
-  DB_USER: {{ .Values.dbUser }}
+  DB_REMOVE_ABANDONED: {{ .Values.dbRemoveAbandoned | quote }}
+  DB_USER: {{ .Values.dbUser | quote }}
   DB_PASSWORD: {{ .Values.dbPassword | quote }}
-  DB_DRIVER: {{ .Values.dbDriver }}
-  DB_URL: "jdbc:mysql://{{ .Values.dbHost }}:3306"
+  DB_DRIVER: {{ .Values.dbDriver | quote}}
+  DB_URL: 'jdbc:mysql://{{ .Values.dbHost }}:3306'
   CAS_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/cas"
   LCM_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm"
   HELP_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm/help"
