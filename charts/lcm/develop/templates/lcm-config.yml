@@ -16,7 +16,7 @@ data:
   DB_URL: "jdbc:mysql://{{ .Values.dbHost }}:3306"
   CAS_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/cas"
   LCM_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm"
-  HELP_SERVER_LOCATION: {{ .Values.serverLocation | quote }}
+  HELP_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm/help"
   LCM_DOCS_VERSION: {{ .Values.lcmDocsVersion | quote }}
   CAS_EXT_PORT: "443"
   LCM_EXT_PORT: "443"
