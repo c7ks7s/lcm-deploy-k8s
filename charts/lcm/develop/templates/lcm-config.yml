@@ -4,7 +4,7 @@ metadata:
   name: '{{ template "lcm.fullname" . }}-config' # Need to revisit this
 data:
   WAIT_HOSTS_TIMEOUT: {{ .Values.waitHosts | quote }}
-  WAIT_HOSTS: "{{ .Values.dbHost | quote }}:3306,apacheds:10389,cas:8081"
+  WAIT_HOSTS: '{{ .Values.dbHost | quote }}:3306,apacheds:10389,cas:8081'
   DB_MAX_ACTIVE: {{ .Values.dbMaxActive | quote }}
   DB_MAX_IDLE: {{ .Values.dbMaxIdle | quote }}
   DB_MAX_WAIT: {{ .Values.dbMaxWait | quote }}
@@ -14,9 +14,9 @@ data:
   DB_PASSWORD: {{ .Values.dbPassword | quote }}
   DB_DRIVER: {{ .Values.dbDriver | quote}}
   DB_URL: 'jdbc:mysql://{{ .Values.dbHost }}:3306'
-  CAS_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/cas"
-  LCM_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm"
-  HELP_SERVER_LOCATION: "https://{{ .Values.serverLocation }}/lcm/help"
+  CAS_SERVER_LOCATION: 'https://{{ .Values.serverLocation }}/cas'
+  LCM_SERVER_LOCATION: 'https://{{ .Values.serverLocation }}/lcm'
+  HELP_SERVER_LOCATION: 'https://{{ .Values.serverLocation }}/lcm/help'
   LCM_DOCS_VERSION: {{ .Values.lcmDocsVersion | quote }}
-  CAS_EXT_PORT: "443"
-  LCM_EXT_PORT: "443"
+  CAS_EXT_PORT: '443'
+  LCM_EXT_PORT: '443'
