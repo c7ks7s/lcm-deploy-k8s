@@ -1,5 +1,16 @@
-lcmImage: "c7ks7s-docker.jfrog.io/lcm-server-insight-webapp"
+lcmImage: "lcm-server-insight-webapp"
 lcmImageTag: "engr-525"
+
+waitHosts: "180"
+dbUser: "root"
+dbPassword: "password"
+dbDriver: "com.mysql.jdbc.Driver"
+lcmDocsLocation: "1.0.0.38"
+dbMaxActive: "100"
+dbMaxIdle: "100"
+dbMaxWait: "30000"
+dbEvictionInterval: "5000"
+dbRemoveAbandoned: "true"
 
 imagePullPolicy: Always
 

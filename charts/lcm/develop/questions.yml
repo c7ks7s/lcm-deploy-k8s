@@ -2,6 +2,12 @@ categories:
 - Clockwork
 - LCM
 questions:
+- variable: dockerRepo
+  description: "Artifactory Docker hostname"
+  label: "Docker Repo"
+  type: string
+  required: true
+  group: "LCM Settings"
 - variable: lcmVersion
   description: "Docker Image Tag (LOWER case Branch Name or Tag)"
   label: "Branch Name"
@@ -99,9 +105,9 @@ questions:
   type: string
   default: "5000"
   required: true
-- variable: serverName
-  description: "Fully Qualified Domain Name (FQDN) for LCM and CAS (Ex: rancher-qa.c7ks7s.com)"
-  label: "SERVER_NAME"
+- variable: serverLocation
+  description: "Fully Qualified Domain Name (FQDN) for LCM and CAS (Ex: lcm-qa.k8s.c7ks7s.com)"
+  label: "SERVER_LOCATION"
   type: string
   required: true
   group: "LCM Settings"

@@ -33,8 +33,7 @@ spec:
     spec:
       containers:
         - name: {{ template "lcm.fullname" . }}
-          #image: c7ks7s-docker.jfrog.io/lcm-server-insight-webapp:1.2.0.37
-          image: "{{ .Values.lcmImage | quote }}-{{ .Values.lcmImageTag | quote }}"
+          image: "{{ .Values.dockerRepo }}/{{ .Values.lcmImage | quote }}:{{ .Values.lcmImageTag | quote }}"
           imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
           envFrom:
           - configMapRef:
