@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: {{ template "lcm.fullname" . }}
-          image: "{{ .Values.dockerRepo }}/{{ .Values.lcmImage | quote }}:{{ .Values.lcmImageTag | quote }}"
+          image: "{{ .Values.dockerRepo }}/{{ .Values.lcmImage }}:{{ .Values.lcmImageTag }}"
           imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
           envFrom:
           - configMapRef:
