@@ -12,7 +12,7 @@ data:
   DB_REMOVE_ABANDONED: {{ .Values.dbRemoveAbandoned | quote }}
   DB_USER: {{ .Values.dbUser | quote }}
   DB_PASSWORD: {{ .Values.dbPassword | quote }}
-  DB_DRIVER: {{ .Values.dbDriver | quote}}
+  DB_DRIVER: {{ .Values.dbDriver | quote }}
   DB_URL: 'jdbc:mysql://{{ .Values.dbHost }}:3306'
   CAS_SERVER_LOCATION: 'https://{{ .Values.serverLocation }}/cas'
   LCM_SERVER_LOCATION: 'https://{{ .Values.serverLocation }}/lcm'
