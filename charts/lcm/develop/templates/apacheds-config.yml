@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ template "apacheds.fullname" . }}-config"
+data:
+  LCM_TENANT_VERSION: {{ .Values.lcmTenantVersion | quote }}
+  TENANTS: {{ .Values.tenants | quote }}

@@ -1,5 +1,7 @@
 lcmImage: "lcm-server-insight-webapp"
 lcmImageTag: "engr-525"
+apachedsImage: "lcm-apacheds"
+apachedsImageTag: "1.0.1"
 
 waitHosts: "180"
 dbUser: "root"

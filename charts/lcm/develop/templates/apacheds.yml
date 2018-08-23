@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "apacheds.fullname" . }}
+  labels:
+    app: {{ template "apacheds.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 10389
+    name: {{ template "apacheds.fullname" . }}
+    targetPort: 10389
+  selector:
+    app: {{ template "apacheds.fullname" . }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "apacheds.fullname" . }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "apacheds.fullname" . }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "apacheds.fullname" . }}
+    spec:
+      containers:
+        - name: {{ template "apacheds.fullname" . }}
+          image: "{{ .Values.dockerRepo }}/{{ .Values.apachedsImage }}:{{ .Values.apachedsImageTag }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
+          envFrom:
+          - configMapRef:
+            name: "{{ template "apacheds.fullname" . }}-config"
+          env:
+          - name: JFROG_USER
+            valueFrom:
+              secretKeyRef:
+                name: jfrog-creds
+                key: jfrog_user
+          - name: JFROG_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: jfrog-creds
+                key: jfrog_password
+      imagePullSecrets:
+      - name: jfrog
