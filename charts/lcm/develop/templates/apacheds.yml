@@ -37,7 +37,7 @@ spec:
           imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
           envFrom:
           - configMapRef:
-            name: "{{ template "apacheds.fullname" . }}-config"
+            name: '{{ template "apacheds.fullname" . }}-config'
           env:
           - name: JFROG_USER
             valueFrom:
